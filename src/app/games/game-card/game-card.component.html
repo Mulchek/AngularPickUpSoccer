@@ -1,0 +1,34 @@
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{game.location}} - {{game.time | date: 'short' }} <i *ngIf="isUserAttending()" class="fa fa-check" style="color: green; padding-left: 10px;"> </i>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-card class="mat-elevation-z2">
+        <button mat-raised-button color="warn" style="float: right" type="button" (click)="deleteGameClick()">
+            <i class="fa fa-times pointer"> </i> Delete Game
+        </button>
+        <h4 id="test">Location</h4>
+        <p>
+            <a href="https://www.google.com/maps/search/?api=1&query={{game.lat}},{{game.long}}" target="_blank">
+                {{game.location}}
+            </a>
+        </p>
+        <h4>Date</h4>
+        <p>
+            {{game.time | date: 'short' }}
+        </p>
+        <h4><span matBadge="{{game.attendees.length}}" matBadgeOverlap="false">Users Attending</span></h4>
+        <p>
+            <mat-chip-list>
+                <mat-chip *ngFor="let attendee of game.attendees">{{attendee}}</mat-chip>
+            </mat-chip-list>
+        </p>
+        <button type="button" mat-raised-button color="primary" *ngIf="!isUserAttending()" (click)="addUser()">Attend</button>
+        <button type="button" mat-raised-button *ngIf="isUserAttending()" (click)="removeUser()">Cancel Attend</button>
+    </mat-card>
+</mat-expansion-panel>
+<div *ngIf="showDeleteGameConfirmation">
+    <confirm-dialog [title]="'Delete Game'" [body]="'Are you sure you want to delete this game?'" [(toggle)]="showDeleteGameConfirmation" (close)="deleteGameConfirmClose()" (confirm)="deleteGame()"></confirm-dialog>
+</div>
+  
