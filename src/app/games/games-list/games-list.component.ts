@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Game } from '../../models/game.model';
 import { GamesService } from '../../services/games.service'
 
@@ -11,28 +11,12 @@ export class GamesList implements OnInit {
 
     games: Game[] = [];
     sortBy: string = "Date";
-    newGame: Game;
-
-    @ViewChild('addGameModal', {static: true}) closeModal: ElementRef
 
     constructor(private gameService: GamesService){}
 
     ngOnInit(){
         this.games = this.gameService.getGames();
-        this.createNewGame();
         this.sortData();
-    }
-
-    createNewGame(){
-        this.newGame = {
-            id: 5, 
-            time: new Date(2019, 6, 18, 11), 
-            attendees: ["loggedInUser"], 
-            location: 'Washington University', 
-            lat: 38.587467,
-            long: -90.303256
-
-        };
     }
 
     setSortBy(value: string){
@@ -59,15 +43,5 @@ export class GamesList implements OnInit {
 
     deleteGame(id: number) {
         this.gameService.deleteGame(id);
-    }
-
-    addGame(){
-        this.gameService.addGame(this.newGame);
-        this.createNewGame();
-        this.closeAddGameModal();
-    }
-
-    closeAddGameModal(){
-        this.closeModal.nativeElement.click();
     }
 }

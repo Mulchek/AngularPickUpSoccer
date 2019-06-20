@@ -8,3 +8,11 @@
 a[href], input[type='submit'], input[type='image'], label[for], select, button, .pointer {
     cursor: pointer;
 }
+.btnMargin {
+    margin: 0px 5px !important;
+}
+.ngx-timepicker {
+    width: 300px;
+    margin-bottom: 15px; 
+    border-bottom: .5px solid rgba(0,0,0,.87) !important;
+}

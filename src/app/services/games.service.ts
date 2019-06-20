@@ -9,39 +9,29 @@ export class GamesService {
             id: 1, 
             time: new Date(2019, 6, 14, 12), 
             attendees: ["usera", "loggedInUser", "userc"], 
-            location: 'Francis Park', 
-            lat: 38.587467,
-            long: -90.303256
+            location: 'Francis Park'
         },
         { 
             id: 2, 
             time: new Date(2019, 6, 14, 14), 
             attendees: ["usera", "userb", "userc"], 
-            location: 'ABC University', 
-            lat: 38.587467,
-            long: -90.303256
+            location: 'ABC University'
         },
         { 
             id: 3, 
             time: new Date(2019, 6, 14, 13), 
             attendees: ["usera", "userb", "userc"],  
-            location: 'SLU', 
-            lat: 38.587467,
-            long: -90.303256
+            location: 'SLU'
         },
         { 
             id: 4, 
             time: new Date(2019, 6, 18, 11), 
             attendees: [], 
-            location: 'Forest Park', 
-            lat: 38.587467,
-            long: -90.303256
+            location: 'Forest Park'
         },
     ];
 
   constructor() { }
-
-
 
   getGames() : Game[] {
     return this.games;
@@ -54,6 +44,20 @@ export class GamesService {
 
   addGame(game: Game){
     this.games.push(game);
+  }
+
+  addUserToGame(id: number, userName: string){
+    let game = this.games.find(g => g.id == id);
+    game.attendees.push(userName);
+  }
+
+  removeUserFromGame(id: number, userName: string){
+    let game = this.games.find(g => g.id == id);
+    game.attendees = game.attendees.filter(a => a != userName);
+  }
+
+  getMaxId() : number{
+      return Math.max.apply(Math, this.games.map(function(o) { return o.id; }))
   }
 
 }

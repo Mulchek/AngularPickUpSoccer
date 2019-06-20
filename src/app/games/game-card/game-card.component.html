@@ -5,14 +5,12 @@
       </mat-panel-title>
     </mat-expansion-panel-header>
     <mat-card class="mat-elevation-z2">
-        <button mat-raised-button color="warn" style="float: right" type="button" (click)="deleteGameClick()">
-            <i class="fa fa-times pointer"> </i> Delete Game
+        <button mat-raised-button color="warn" style="float: right" type="button" (click)="deleteGameClick(index)">
+            <i class="fa fa-trash pointer"> </i> Delete Game
         </button>
         <h4 id="test">Location</h4>
         <p>
-            <a href="https://www.google.com/maps/search/?api=1&query={{game.lat}},{{game.long}}" target="_blank">
-                {{game.location}}
-            </a>
+            {{game.location}}
         </p>
         <h4>Date</h4>
         <p>
@@ -28,7 +26,9 @@
         <button type="button" mat-raised-button *ngIf="isUserAttending()" (click)="removeUser()">Cancel Attend</button>
     </mat-card>
 </mat-expansion-panel>
-<div *ngIf="showDeleteGameConfirmation">
-    <confirm-dialog [title]="'Delete Game'" [body]="'Are you sure you want to delete this game?'" [(toggle)]="showDeleteGameConfirmation" (close)="deleteGameConfirmClose()" (confirm)="deleteGame()"></confirm-dialog>
-</div>
-  
+<p-confirmDialog header="Delete Game" [key]="index" #cd>
+    <p-footer>
+        <button type="button" mat-raised-button (click)="cd.reject()">Cancel</button>        
+        <button type="button" mat-raised-button color="primary" (click)="cd.accept()">Continue</button>        
+    </p-footer>
+</p-confirmDialog>
