@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Game } from '../../models/game.model';
 import { GamesService } from '../../services/games.service'
@@ -28,9 +28,9 @@ export class AddGame implements OnInit{
 
     ngOnInit(){
         this.newGameForm = new FormGroup({
-            location: new FormControl(''),
-            date: new FormControl(''),
-            time: new FormControl('')
+            location: new FormControl('', Validators.required),
+            date: new FormControl('', Validators.required),
+            time: new FormControl('', Validators.required)
         });
 
         this.newGameForm.controls.date.setValue(new Date());
@@ -38,9 +38,11 @@ export class AddGame implements OnInit{
     }
 
     onSubmit(){
-        let newGame = this.convertFormDataToGame();
-        this.addGame(newGame);
-        this.router.navigate(['/games'])
+        if (this.newGameForm.valid){
+            let newGame = this.convertFormDataToGame();
+            this.addGame(newGame);
+            this.router.navigate(['/games'])
+        }
     }
 
     convertFormDataToGame(): Game{

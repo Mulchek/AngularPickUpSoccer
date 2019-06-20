@@ -17,7 +17,7 @@
         </div>
         <div>
             <button type="button" mat-raised-button class="btnMargin" (click)="cancel()">Cancel</button>
-            <button type="submit" mat-raised-button class="btnMargin" color="primary">Submit</button>
+            <button type="submit" mat-raised-button class="btnMargin" color="primary" [disabled]="!newGameForm.valid">Submit</button>
         </div>
     </form>
 </mat-card>

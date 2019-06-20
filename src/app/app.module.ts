@@ -14,7 +14,8 @@ import { UserService } from './services/user.service';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule, MatCardModule, MatChipsModule, MatBadgeModule, MatExpansionModule, 
-    MatToolbarModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+    MatToolbarModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule,
+    MatMenuModule } from '@angular/material';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
@@ -32,7 +33,7 @@ import {ConfirmationService} from 'primeng/api';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule, MatCheckboxModule, MatExpansionModule, MatToolbarModule, MatCardModule, MatChipsModule, MatBadgeModule, MatFormFieldModule, MatInputModule,
-    MatDatepickerModule, MatNativeDateModule,
+    MatDatepickerModule, MatNativeDateModule, MatMenuModule,
     NgxMaterialTimepickerModule,
     ConfirmDialogModule,
     ReactiveFormsModule

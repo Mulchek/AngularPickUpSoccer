@@ -46,14 +46,24 @@ export class GamesService {
     this.games.push(game);
   }
 
+  updateGame(id: number, location: string, date: Date){
+    let game = this.getGameById(id);
+    game.location = location;
+    game.time = date;
+  }
+
   addUserToGame(id: number, userName: string){
-    let game = this.games.find(g => g.id == id);
+    let game = this.getGameById(id);
     game.attendees.push(userName);
   }
 
   removeUserFromGame(id: number, userName: string){
-    let game = this.games.find(g => g.id == id);
+    let game = this.getGameById(id);
     game.attendees = game.attendees.filter(a => a != userName);
+  }
+
+  getGameById(id: number) : Game {
+      return this.games.find(g => g.id == id);
   }
 
   getMaxId() : number{

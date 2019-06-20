@@ -9,7 +9,7 @@ export class UserService {
     constructor() {
         this.currentUser = {
             id: "1",
-            userName: "loggedInUser"
+            userName: "AMulchek"
         }
      }
 

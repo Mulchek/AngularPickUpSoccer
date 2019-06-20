@@ -56,4 +56,7 @@ export class GameCard implements OnInit{
         this.deleteGameEvent.emit(this.game.id);
     }
 
+    editGameClick(){
+        
+    }
 }

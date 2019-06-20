@@ -1,12 +1,16 @@
 <h2>Upcoming Games</h2>
 <mat-card>
     <div class="btn-group" role="group" aria-label="sortGroup">
-        <button type="button" mat-raised-button [color]="sortBy == 'Location' ? 'primary' : ''" (click)="setSortBy('Location')">Location</button>
-        <button type="button" mat-raised-button [color]="sortBy == 'Date' ? 'primary' : ''" (click)="setSortBy('Date')">Date</button>
+        <button type="button" mat-raised-button [color]="sortBy == 'Location' ? 'primary' : ''" (click)="setSortBy('Location')">
+            <i class="fa fa-sort-down"> </i> Location
+        </button>
+        <button type="button" mat-raised-button [color]="sortBy == 'Date' ? 'primary' : ''" (click)="setSortBy('Date')">
+            <i class="fa fa-sort-down"> </i> Date
+        </button>
     </div>
     <a routerLink="/add-game">
       <button mat-raised-button color="primary" type="button" style="float: right">
-          <i class="fa fa-plus pointer" style="color: greenyellow;"> </i> Add Game
+          <i class="fa fa-plus"> </i> Add Game
         </button>
     </a>
     <mat-accordion>

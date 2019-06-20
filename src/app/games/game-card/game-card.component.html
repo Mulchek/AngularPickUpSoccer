@@ -5,8 +5,11 @@
       </mat-panel-title>
     </mat-expansion-panel-header>
     <mat-card class="mat-elevation-z2">
-        <button mat-raised-button color="warn" style="float: right" type="button" (click)="deleteGameClick(index)">
-            <i class="fa fa-trash pointer"> </i> Delete Game
+        <button class="btnMargin" mat-raised-button color="warn" style="float: right" type="button" (click)="deleteGameClick(index)">
+            <i class="fa fa-trash"> </i> Delete Game
+        </button>
+        <button class="btnMargin" mat-raised-button color="primary" style="float: right" type="button" (click)="editGameClick()">
+            <i class="fa fa-pencil"> </i> Edit Game
         </button>
         <h4 id="test">Location</h4>
         <p>
@@ -22,8 +25,12 @@
                 <mat-chip *ngFor="let attendee of game.attendees">{{attendee}}</mat-chip>
             </mat-chip-list>
         </p>
-        <button type="button" mat-raised-button color="primary" *ngIf="!isUserAttending()" (click)="addUser()">Attend</button>
-        <button type="button" mat-raised-button *ngIf="isUserAttending()" (click)="removeUser()">Cancel Attend</button>
+        <button type="button" mat-raised-button color="primary" *ngIf="!isUserAttending()" (click)="addUser()">
+            <i class="fa fa-check"> </i> Attend
+        </button>
+        <button type="button" mat-raised-button *ngIf="isUserAttending()" (click)="removeUser()">
+            <i class="fa fa-times"> </i> Cancel Attend
+        </button>
     </mat-card>
 </mat-expansion-panel>
 <p-confirmDialog header="Delete Game" [key]="index" #cd>
