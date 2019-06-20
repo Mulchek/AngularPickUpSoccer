@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Game } from '../../models/game.model';
-import { GamesService } from '../../services/games.service'
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Game } from '../../models/game.model';
+import { GamesService } from '../../services/games.service'
+import { UserService } from '../../services/user.service';
+
 @Component({
   selector: 'add-game',
   templateUrl: './add-game.component.html',
@@ -22,7 +24,7 @@ export class AddGame implements OnInit{
 
     newGameForm: FormGroup;
 
-    constructor(private gameService: GamesService, private router: Router){}
+    constructor(private gameService: GamesService, private router: Router, private userService: UserService){}
 
     ngOnInit(){
         this.newGameForm = new FormGroup({
@@ -45,11 +47,12 @@ export class AddGame implements OnInit{
         var formResult = this.newGameForm.value;
 
         let id = this.gameService.getMaxId() + 1;
+        let userName = this.userService.getCurrentUserName();
 
         let newGame: Game = { 
             id: id, 
             time: formResult.date, 
-            attendees: ["loggedInUser"], 
+            attendees: [userName], 
             location: formResult.location
         }
         

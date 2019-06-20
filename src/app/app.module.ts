@@ -10,6 +10,7 @@ import { GameCard } from './games/game-card/game-card.component';
 import { AddGame } from './games/add-game/add-game.component';
 
 import { GamesService } from './services/games.service';
+import { UserService } from './services/user.service';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule, MatCardModule, MatChipsModule, MatBadgeModule, MatExpansionModule, 
@@ -38,7 +39,8 @@ import {ConfirmationService} from 'primeng/api';
   ],
   providers: [
       GamesService,
-      ConfirmationService
+      ConfirmationService,
+      UserService
   ],
   bootstrap: [AppComponent]
 })

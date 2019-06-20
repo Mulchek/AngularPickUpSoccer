@@ -1,7 +1,8 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { Game } from '../../models/game.model';
 import { ConfirmationService } from 'primeng/api';
-import { GamesService } from '../../services/games.service'
+import { GamesService } from '../../services/games.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'game-card',
@@ -12,16 +13,21 @@ import { GamesService } from '../../services/games.service'
   }
   `]
 })
-export class GameCard{
+export class GameCard implements OnInit{
 
     @Input() game: Game;
     @Input() index: number;
     @Output() deleteGameEvent = new EventEmitter<number>();
     showDeleteGameConfirmation: boolean;
     toggleContent: boolean;
-    userName: string = "loggedInUser"
+    userName: string;
 
-    constructor(private confirmationService: ConfirmationService, private gamesService: GamesService){ }
+    constructor(private confirmationService: ConfirmationService, private gamesService: GamesService,
+        private userService: UserService){ }
+
+    ngOnInit(){
+        this.userName = this.userService.getCurrentUserName();
+    }
 
     isUserAttending() : boolean {
         return this.game.attendees.some(a => a == this.userName);
