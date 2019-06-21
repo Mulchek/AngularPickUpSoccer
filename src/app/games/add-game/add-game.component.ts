@@ -13,7 +13,7 @@ import { UserService } from '../../services/user.service';
         min-width: 300px;
     }
     .timeInput {
-        width: 30%;
+        width: 10%;
         height: 65px;
         cursor: pointer;
         margin-left: 10px;
@@ -29,12 +29,9 @@ export class AddGame implements OnInit{
     ngOnInit(){
         this.newGameForm = new FormGroup({
             location: new FormControl('', Validators.required),
-            date: new FormControl('', Validators.required),
-            time: new FormControl('', Validators.required)
+            date: new FormControl(new Date(), Validators.required),
+            time: new FormControl('12:00 pm', Validators.required)
         });
-
-        this.newGameForm.controls.date.setValue(new Date());
-        this.newGameForm.controls.time.setValue("12:00 pm");
     }
 
     onSubmit(){

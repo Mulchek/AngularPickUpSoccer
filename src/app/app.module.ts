@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { GamesList } from './games/games-list/games-list.component';
 import { GameCard } from './games/game-card/game-card.component';
 import { AddGame } from './games/add-game/add-game.component';
+import { EditGame } from './games/edit-game/edit-game.component';
 import { GameComments } from './games/game-comments/game-comments.component';
 
 import { GamesService } from './services/games.service';
@@ -28,7 +29,8 @@ import {ConfirmationService} from 'primeng/api';
     GamesList,
     GameCard,
     AddGame,
-    GameComments
+    GameComments,
+    EditGame
   ],
   imports: [
     BrowserModule,

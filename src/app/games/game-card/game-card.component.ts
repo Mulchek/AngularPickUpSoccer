@@ -3,6 +3,7 @@ import { Game } from '../../models/game.model';
 import { ConfirmationService } from 'primeng/api';
 import { GamesService } from '../../services/games.service';
 import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'game-card',
@@ -23,7 +24,7 @@ export class GameCard implements OnInit{
     userName: string;
 
     constructor(private confirmationService: ConfirmationService, private gamesService: GamesService,
-        private userService: UserService){ }
+        private userService: UserService, private router: Router){ }
 
     ngOnInit(){
         this.userName = this.userService.getCurrentUserName();
@@ -57,6 +58,6 @@ export class GameCard implements OnInit{
     }
 
     editGameClick(){
-        
+        this.router.navigate(["/edit-game/" + this.game.id])
     }
 }
