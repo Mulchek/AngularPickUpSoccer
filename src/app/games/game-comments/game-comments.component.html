@@ -1,0 +1,23 @@
+<div *ngFor="let comment of comments">
+    <mat-card class="mat-elevation-z2">
+        <mat-card-title>
+            {{comment.userName}}
+        </mat-card-title>
+        <mat-card-subtitle>
+            {{comment.dateCreated | date: 'short'}}
+        </mat-card-subtitle>
+        <mat-card-content>
+            {{comment.text}}
+        </mat-card-content>
+    </mat-card>
+</div>
+<div style="margin-top: 10px;">
+    <form [formGroup]="newCommentForm" #formDirective="ngForm" (ngSubmit)="addComment(formDirective)" novalidate>
+        <mat-form-field style="width: 100%" >
+            <textarea matInput placeholder="Leave a comment" formControlName="text"></textarea>
+        </mat-form-field>
+        <button type="submit" mat-raised-button class="btnMargin" color="primary" [disabled]="!newCommentForm.valid">
+            Add Comment
+        </button>
+    </form>
+</div>

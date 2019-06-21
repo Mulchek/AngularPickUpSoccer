@@ -1,4 +1,4 @@
-<mat-expansion-panel>
+<mat-expansion-panel class="mat-elevation-z2">
     <mat-expansion-panel-header>
       <mat-panel-title>
         {{game.location}} - {{game.time | date: 'short' }} <i *ngIf="isUserAttending()" class="fa fa-check" style="color: green; padding-left: 10px;"> </i>
@@ -11,7 +11,7 @@
         <button class="btnMargin" mat-raised-button color="primary" style="float: right" type="button" (click)="editGameClick()">
             <i class="fa fa-pencil"> </i> Edit Game
         </button>
-        <h4 id="test">Location</h4>
+        <h4>Location</h4>
         <p>
             {{game.location}}
         </p>
@@ -25,12 +25,14 @@
                 <mat-chip *ngFor="let attendee of game.attendees">{{attendee}}</mat-chip>
             </mat-chip-list>
         </p>
-        <button type="button" mat-raised-button color="primary" *ngIf="!isUserAttending()" (click)="addUser()">
+        <button class="btnMargin" type="button" mat-raised-button color="primary" *ngIf="!isUserAttending()" (click)="addUser()">
             <i class="fa fa-check"> </i> Attend
         </button>
-        <button type="button" mat-raised-button *ngIf="isUserAttending()" (click)="removeUser()">
+        <button class="btnMargin" type="button" mat-raised-button color="warn" *ngIf="isUserAttending()" (click)="removeUser()">
             <i class="fa fa-times"> </i> Cancel Attend
         </button>
+        <h4 id="test">Comments</h4>
+        <game-comments [gameId]="game.id" [comments]="game.comments"></game-comments>
     </mat-card>
 </mat-expansion-panel>
 <p-confirmDialog header="Delete Game" [key]="index" #cd>

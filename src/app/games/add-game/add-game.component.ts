@@ -55,7 +55,8 @@ export class AddGame implements OnInit{
             id: id, 
             time: formResult.date, 
             attendees: [userName], 
-            location: formResult.location
+            location: formResult.location,
+            comments: []
         }
         
         let time: string = formResult.time;
